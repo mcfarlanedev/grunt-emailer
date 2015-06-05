@@ -4,7 +4,7 @@ Install NodeJS at http://nodejs.org
 
 Windows:
 
-Download Ruby 2.2.1p85 for your Windows architecture.
+Download latest Ruby for your Windows architecture.
 
     http://rubyinstaller.org/downloads/
 
