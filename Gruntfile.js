@@ -26,12 +26,37 @@ module.exports = function(grunt){
 		      'dist/email-inline.html': ['dist/email.html']
 		    }
 		  }
-		}	
+		},
+        htmlmin: {
+            options: {
+                removeComments     : true,
+                collapseWhitespace : true,
+                minifyCSS          : true,
+                keepClosingSlash   : true,
+            },
+            files: {
+                expand : true,
+                ext    : '.html',
+                src    : ['./dist/email-inline.html'],
+                dest   : './'
+            }
+        },
+        /**
+         * Watch
+         */
+        watch: {
+          sass: {
+            files: 'source_file.html',
+            tasks: ['uncss', 'processhtml', 'premailer', 'htmlmin']
+          }
+        }
 	});
 
 	// Load the plugin that provides the "uglify" task.
 	grunt.loadNpmTasks('grunt-uncss');
 	grunt.loadNpmTasks('grunt-processhtml');
 	grunt.loadNpmTasks('grunt-premailer');
-	grunt.registerTask('email', ['uncss', 'processhtml', 'premailer'])
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.registerTask('default', ['watch'])
 }
