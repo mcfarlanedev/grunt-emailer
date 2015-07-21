@@ -27,6 +27,7 @@ module.exports = function(grunt){
 						baseDir: "./",
 						index: "source_file.html"
 					},
+					notify: false,
 					watchTask: true
 				}
 			}
