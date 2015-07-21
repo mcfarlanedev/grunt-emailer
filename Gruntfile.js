@@ -17,6 +17,20 @@ module.exports = function(grunt){
 				}
 			}
 		},
+		browserSync: {
+			dev: {
+				bsFiles: {
+					src : 'source_file.html'
+				},
+				options: {
+					server: {
+						baseDir: "./",
+						index: "source_file.html"
+					},
+					watchTask: true
+				}
+			}
+		},
 		premailer: {
 		  main: {
 		    options: {
@@ -58,5 +72,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-premailer');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.registerTask('default', ['watch'])
+	grunt.loadNpmTasks('grunt-browser-sync');
+	grunt.registerTask('default', ['browserSync','watch'])
 }
